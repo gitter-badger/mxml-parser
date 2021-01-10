@@ -75,10 +75,10 @@ public class MXMLEntityResolver implements org.xml.sax.EntityResolver {
           Map.entry(
               "-//Recordare//ELEMENTS MusicXML 3.0 Barline//EN", dtdFolder + "3.0/barline.mod"),
           Map.entry(
-              "-//Recordare//ELEMENTS MusicXML cd3.0 Direction//EN", dtdFolder + "3.0/direction.mod"),
+              "-//Recordare//ELEMENTS MusicXML cd3.0 Direction//EN",
+              dtdFolder + "3.0/direction.mod"),
           Map.entry("-//Recordare//ELEMENTS MusicXML 3.0 Score//EN", dtdFolder + "3.0/score.mod"),
           Map.entry("-//Recordare//DTD MusicXML 3.1 Partwise//EN", dtdFolder + "3.1/partwise.dtd"),
-
           Map.entry("-//Recordare//ELEMENTS MusicXML 3.1 Common//EN", dtdFolder + "3.1/common.mod"),
           Map.entry("-//Recordare//ELEMENTS MusicXML 3.1 Layout//EN", dtdFolder + "3.1/layout.mod"),
           Map.entry(
@@ -94,7 +94,11 @@ public class MXMLEntityResolver implements org.xml.sax.EntityResolver {
               "-//Recordare//ELEMENTS MusicXML 3.1 Direction//EN", dtdFolder + "3.1/direction.mod"),
           Map.entry("-//Recordare//ELEMENTS MusicXML 3.1 Score//EN", dtdFolder + "3.1/score.mod"));
 
-
+  /*
+   * Function resolves the entity of the XML file which will be parsed
+   * @param publicID the public id of the entity
+   * @param systemID the system id of the entity
+   */
   public final InputSource resolveEntity(String publicID, String systemID)
       throws SAXException, IOException {
     LOGGER.info("Resolve entity function called");
