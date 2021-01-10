@@ -1,0 +1,19 @@
+version: 2.1
+
+executors:
+  jexecutor:
+    docker:
+      - image: maven:latest
+
+jobs:
+  test:
+    executor: jexecutor
+    steps:
+      - checkout
+      - run: mvn test
+
+workflows:
+  version: 2.1
+  build_test:
+    jobs:
+      - test

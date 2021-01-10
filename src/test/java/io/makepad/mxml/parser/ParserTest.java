@@ -1,19 +1,14 @@
 package io.makepad.mxml.parser;
+
+import static org.junit.Assert.assertEquals;
+
+import java.io.File;
+import java.util.ArrayList;
 import java.util.logging.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class ParserTest {
@@ -38,19 +33,31 @@ public class ParserTest {
         String[] invalidFiles = new File(invalidPrefix).list();
         ArrayList<Object[]> filesList = new ArrayList<Object[]>();
         for (String validFilePath: validFiles) {
-            filesList.add(new Object[]{new File(validPrefix + "/" + validFilePath).getAbsolutePath(), true});
+            if (validFilePath.contains("xml")) {
+              filesList.add(new Object[]{new File(validPrefix + "/" + validFilePath).getAbsolutePath(), true});
+            }
         }
         for (String invalidFilePath: invalidFiles) {
-            filesList.add(new Object[]{new File(invalidPrefix + "/" + invalidFilePath).getAbsolutePath(), false});
+            if (invalidFilePath.contains("xml")) {
+              filesList.add(new Object[]{new File(invalidPrefix + "/" + invalidFilePath).getAbsolutePath(), false});
+            }
         }
         return filesList;
     }
 
-    @Test
-    public void testValidity() {
-        LOGGER.info(String.format("Parsed document tag name %s", this.parsedDocument.getDocumentElement().getTagName()));
-        LOGGER.info(String.format("Test will return %b", this.parsedDocument.getDocumentElement().getTagName().equals("score-partwise")));
-        LOGGER.info(String.format("isDocument valid %b", this.isDocumentValid));
-        assertEquals(this.parsedDocument.getDocumentElement().getTagName().equals("score-partwise"), this.isDocumentValid);
-    }
+  @Test
+  public void testValidity() {
+    LOGGER.info(
+        String.format(
+            "Parsed document tag name %s", this.parsedDocument.getDocumentElement().getTagName()));
+    LOGGER.info(
+        String.format(
+            "Test will return %b",
+            this.parsedDocument.getDocumentElement().getTagName().equals("score-partwise")));
+    LOGGER.info(String.format("isDocument valid %b", this.isDocumentValid));
+    assertEquals(
+        this.parsedDocument != null
+            && this.parsedDocument.getDocumentElement().getTagName().equals("score-partwise"),
+        this.isDocumentValid);
+  }
 }
