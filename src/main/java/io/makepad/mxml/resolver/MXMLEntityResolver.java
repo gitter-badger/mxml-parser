@@ -102,8 +102,8 @@ public class MXMLEntityResolver implements org.xml.sax.EntityResolver {
   public final InputSource resolveEntity(String publicID, String systemID)
       throws SAXException, IOException {
     LOGGER.info("Resolve entity function called");
-    LOGGER.info(String.format("Public ID ", publicID));
-    LOGGER.info(String.format("System ID ", systemID));
+    LOGGER.info(String.format("Public ID %s", publicID));
+    LOGGER.info(String.format("System ID %s", systemID));
     String fileName = PUBLIC_ID_MAP.get(publicID);
     LOGGER.info(String.format("File name %s", fileName));
     if (fileName != null) {
