@@ -51,6 +51,6 @@ public class ParserTest {
         LOGGER.info(String.format("Parsed document tag name %s", this.parsedDocument.getDocumentElement().getTagName()));
         LOGGER.info(String.format("Test will return %b", this.parsedDocument.getDocumentElement().getTagName().equals("score-partwise")));
         LOGGER.info(String.format("isDocument valid %b", this.isDocumentValid));
-        assertEquals(this.parsedDocument.getDocumentElement().getTagName().equals("score-partwise"), this.isDocumentValid);
+        assertEquals(this.parsedDocument != null && this.parsedDocument.getDocumentElement().getTagName().equals("score-partwise"), this.isDocumentValid);
     }
 }
