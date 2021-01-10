@@ -13,7 +13,10 @@ import org.xml.sax.SAXException;
 public class Parser {
   private static final Logger LOGGER = Logger.getLogger(Parser.class.getName());
   public Document document;
-
+  /*
+  * Class constructor
+  * @param filePath the path of the MusicXML file
+  */
   public Parser(String filePath) {
     try {
       DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
