@@ -2,9 +2,12 @@ package io.makepad.mxml.parser;
 
 import static org.junit.Assert.assertEquals;
 
+import io.makepad.mxml.exceptions.FileFormatException;
+import io.makepad.mxml.exceptions.MXMLParserException;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.logging.Logger;
+import javax.management.modelmbean.XMLParseException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -19,7 +22,15 @@ public class ParserTest {
     public ParserTest(String filePath, boolean isDocumentValid) {
         LOGGER.info(String.format("File path %s", filePath));
         LOGGER.info(String.format("isDocumentValid %s", isDocumentValid));
-        this.parsedDocument = new Parser(filePath).document;
+        try {
+          this.parsedDocument = new Parser(filePath).document;
+        } catch(MXMLParserException e) {
+          LOGGER.severe("MXMLParserException caught");
+          this.parsedDocument = null;
+        } catch (FileFormatException e) {
+          LOGGER.severe("FileFormatException caught");
+          this.parsedDocument = null;
+        }
         LOGGER.info(String.format("Parsed document uri %s", this.parsedDocument.getDocumentURI()));
         LOGGER.info(String.format("Document element tag name %s", this.parsedDocument.getDocumentElement().getTagName()));
         this.isDocumentValid = isDocumentValid;
@@ -33,13 +44,13 @@ public class ParserTest {
         String[] invalidFiles = new File(invalidPrefix).list();
         ArrayList<Object[]> filesList = new ArrayList<Object[]>();
         for (String validFilePath: validFiles) {
-            if (validFilePath.contains("xml")) {
+            if (validFilePath.contains("mxml") ||validFilePath.contains("mxl")) {
               filesList.add(new Object[]{new File(validPrefix + "/" + validFilePath).getAbsolutePath(), true});
             }
         }
         for (String invalidFilePath: invalidFiles) {
-            if (invalidFilePath.contains("xml")) {
-              filesList.add(new Object[]{new File(invalidPrefix + "/" + invalidFilePath).getAbsolutePath(), false});
+          if (invalidFilePath.contains("mxml") || invalidFilePath.contains("mxl")) {
+            filesList.add(new Object[]{new File(invalidPrefix + "/" + invalidFilePath).getAbsolutePath(), false});
             }
         }
         return filesList;
