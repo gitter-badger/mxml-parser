@@ -1,7 +1,7 @@
 <!--
 	MusicXML note.dtd
 
-	Version 1.0 - 13 January 2004
+	Version 1.0 - 7 January 2004
 	
 	Copyright © 2004 Recordare LLC.
 	http://www.recordare.com/
@@ -88,13 +88,14 @@
 <!--
 	Pitch is represented as a combination of the step of the
 	diatonic scale, the chromatic alteration, and the octave.
-	The step element uses the English letters A through G. 
-	The alter element represents chromatic alteration in
-	number of semitones (e.g., -1 for flat, 1 for sharp).
-	Decimal values like 0.5 (quarter tone sharp) may be 
-	used for microtones. The octave element is represented
-	by the numbers 0 to 9, where 4 indicates the octave
-	started by middle C.
+	The step element uses the English letters A through G:
+	in a future revision, this could expand to international
+	namings. The alter element represents chromatic
+	alteration in number of semitones (e.g., -1 for flat,
+	1 for sharp). Decimal values like 0.5 (quarter tone
+	sharp) may be used for microtones. The octave element
+	is represented by the numbers 0 to 9, where 4 indicates
+	the octave started by middle C.
 -->
 <!ELEMENT pitch (step, alter?, octave)>
 <!ELEMENT step (#PCDATA)>
@@ -242,7 +243,7 @@
 	Stems can be down, up, none, or double. For down and up
 	stems, the position attributes can be used to specify
 	stem length. The relative values specify the end of the
-	stem relative to the program default. Default values
+	stem relative to the program default. Deafult values
 	specify an absolute end stem position. Negative values
 	of default-y are not permitted. Negative values of
 	relative-y that would flip a stem instead of shortening
@@ -382,7 +383,7 @@
 	Glissando and slide elements both indicate rapidly
 	moving from one pitch to the other so that individual
 	notes are not discerned. The distinction is similar
-	to that between NIFF's glissando and portamento 
+	to that between NIFF's glisssando and portamento 
 	elements. A glissando sounds the half notes in
 	between the slide and defaults to a wavy line. A
 	slide is continuous between two notes and defaults
@@ -479,9 +480,9 @@
 >
 
 <!--
-	The name for this ornament is based on the
-	German, to avoid confusion with the more common 
-	slide element defined earlier.
+	The German name for this ornament is used to avoid
+	confusion with the more common slide element
+	defined earlier.
 -->
 <!ELEMENT schleifer EMPTY>
 <!ATTLIST schleifer
@@ -553,8 +554,8 @@
 	a touching pitch.
 -->
 <!ELEMENT harmonic
-	((natural | artificial)?, 
-	 (base-pitch | touching-pitch | sounding-pitch)?)>
+    ((natural | artificial)?, 
+     (base-pitch | touching-pitch | sounding-pitch)?)>
 <!ATTLIST harmonic
     %position; 
     %placement; 
@@ -860,10 +861,10 @@
 	ISO 3166.
 -->
 <!ELEMENT lyric
-	((((syllabic?, text),
-	   (elision, syllabic?, text)*, extend?) |
-	   extend | laughing | humming),
-	  end-line?, end-paragraph?, %editorial;)>
+  ((((syllabic?, text),
+     (elision, syllabic?, text)*, extend?) |
+    extend | laughing | humming),
+   end-line?, end-paragraph?, %editorial;)>
 <!ATTLIST lyric
     number NMTOKEN #IMPLIED
     name CDATA #IMPLIED
@@ -899,7 +900,7 @@
 
 <!--
 	Backup and forward are required to coordinate multiple
-	voices in one part, including music on multiple staves.
+	voices in one part, including music on a grand staff.
 	Forward is generally used within voices and staves,
 	while backup to move between voices and staves. Thus
 	the backup element does not include voice or staff

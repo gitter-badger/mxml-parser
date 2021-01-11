@@ -1,5 +1,5 @@
 <!--
-	MusicXML Partwise DTD
+	MusicXML Timewise DTD
 
 	Version 1.0 - 7 January 2004
 	
@@ -44,9 +44,9 @@
 	
 	Suggested use:
 	
-	<!DOCTYPE score-partwise PUBLIC
-		"-//Recordare//DTD MusicXML 1.0 Partwise//EN"
-		"http://www.musicxml.org/dtds/partwise.dtd">
+	<!DOCTYPE score-timewise PUBLIC
+		"-//Recordare//DTD MusicXML 1.0 Timewise//EN"
+		"http://www.musicxml.org/dtds/timewise.dtd">
 	
 	This DTD is made up of a series of component DTDs, all
 	of which are included here.
@@ -61,8 +61,8 @@
 	entities are what distinguish the partwise and timewise
 	DTD files.
 --> 
-<!ENTITY % partwise "INCLUDE">
-<!ENTITY % timewise "IGNORE">
+<!ENTITY % partwise "IGNORE">
+<!ENTITY % timewise "INCLUDE">
 
 <!-- Component DTDs -->
 
