@@ -3,6 +3,7 @@ package io.makepad.mxml.parser;
 import io.makepad.mxml.exceptions.FileFormatException;
 import io.makepad.mxml.exceptions.MXMLParserException;
 import io.makepad.mxml.resolver.MXMLEntityResolver;
+import io.makepad.mxml.sheetMusic.SheetMusic;
 import io.makepad.mxml.utils.Filename;
 import java.io.BufferedReader;
 import java.io.File;
@@ -30,6 +31,7 @@ import org.xml.sax.SAXException;
 public class Parser {
   private static final Logger LOGGER = Logger.getLogger(Parser.class.getName());
   public Document document;
+  private SheetMusic sheetMusic;
   /*
   * Class constructor
   * @param filePath the path of the MusicXML file
@@ -84,9 +86,9 @@ public class Parser {
           LOGGER.throwing(Parser.class.getName(), "constructor", e);
           throw e;
       }
-
-
-
+      LOGGER.fine("Document parsing completed");
+      LOGGER.info("Parsing the sheet music");
+      this.sheetMusic = new SheetMusic(this.document);
     } catch (ParserConfigurationException e) {
       LOGGER.throwing(Parser.class.getName(), "constructor", e);
       e.printStackTrace();
@@ -117,5 +119,8 @@ public class Parser {
     return new InputSource(new StringReader(stringBuilder.toString()));
   }
 
+  public SheetMusic getSheetMusic() {
+    return this.sheetMusic;
+  }
 
 }
