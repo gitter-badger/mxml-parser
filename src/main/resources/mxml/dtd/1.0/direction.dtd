@@ -1,7 +1,7 @@
 <!--
 	MusicXML direction.dtd
 
-	Version 1.0 - 13 January 2004
+	Version 1.0 - 7 January 2004
 	
 	Copyright © 2004 Recordare LLC.
 	http://www.recordare.com/
@@ -269,7 +269,7 @@
 	    suspended-second (major second, perfect fifth)
 	    suspended-fourth (perfect fourth, perfect fifth)
 	Functional sixths:
-	    Neapolitan
+	    Neopolitan
 	    Italian
 	    French
 	    German
@@ -396,7 +396,7 @@
 <!--
 	The print element contains general printing parameters.
 	
-	Staff spacing between multiple staves is measured in
+	Staff spacing between grand staffs is measured in
 	tenths of staff lines (e.g. 100 = 10 staff lines).
 	
 	The new-system and new-page attributes indicate

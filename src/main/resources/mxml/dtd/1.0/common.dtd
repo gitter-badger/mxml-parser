@@ -1,7 +1,7 @@
 <!--
 	MusicXML common.dtd
 
-	Version 1.0 - 13 January 2004
+	Version 1.0 - 7 January 2004
 	
 	Copyright © 2004 Recordare LLC.
 	http://www.recordare.com/
@@ -286,7 +286,7 @@
 	beats element refers to the number of discrete elements
 	(like MIDI pitch bends) used to represent a continuous
 	bend or slide. The first-beat indicates the percentage
-	of the direction for starting a bend; the last-beat the
+	of the durection for starting a bend; the last-beat the
 	percentage for ending it. The default choices are:
 	
 		accelerate = "no"
@@ -345,8 +345,8 @@
 >
 
 <!--
-	Staff assignment is only needed for music notated on
-	multiple staves. Used by both notes and directions. 
+	Staff assignment is only needed for music notated on the
+	grand staff. Used by both notes and directions. 
 -->
 <!ELEMENT staff (#PCDATA)>
 
